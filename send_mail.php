@@ -39,20 +39,26 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 
 // ─── Send data to Google Sheets ───────────────────────────────────────────────
-$googleScriptUrl = "https://script.google.com/macros/s/AKfycbzL16YOftt4cROcXEXOmhJ3RjuYkzS4drv5GHPjUG5uH3X-iq0jpg9PckMswEOZrbcW0Q/exec";
+$googleScriptUrl = "https://script.google.com/macros/s/AKfycbxMGm2zixVyEfYHKJytGqzKEa3UqfCjxHA2YRrJn_OYZKemLLb6UxgAk2mhb6rY_AOkfQ/exec";
 
 $payload = json_encode([
-    "name"     => $name,
-    "phone"    => $phone,
-    "email"    => $email,
-    "course"   => $course,
-    "city"     => $city,
-    "page_url" => $page_url
+    "timestamp"   => date('Y-m-d H:i:s'),
+    "name"        => $name,
+    "phone"       => $phone,
+    "email"       => $email,
+    "course"      => $course,
+    "city"        => $city ?: "Delhi",
+    "action_type" => clean($_POST['action_type'] ?? 'Enquiry / Demo'),
+    "source"      => 'Delhi Landing Page',
+    "page_url"    => $page_url
 ]);
 
 $ch = curl_init($googleScriptUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 8);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json'
 ]);
