@@ -38,34 +38,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 
-// ─── Send data to Google Sheets ───────────────────────────────────────────────
-$googleScriptUrl = "https://script.google.com/macros/s/AKfycbxMGm2zixVyEfYHKJytGqzKEa3UqfCjxHA2YRrJn_OYZKemLLb6UxgAk2mhb6rY_AOkfQ/exec";
-
-$payload = json_encode([
-    "timestamp"   => date('Y-m-d H:i:s'),
-    "name"        => $name,
-    "phone"       => $phone,
-    "email"       => $email,
-    "course"      => $course,
-    "city"        => $city ?: "Delhi",
-    "action_type" => clean($_POST['action_type'] ?? 'Enquiry / Demo'),
-    "source"      => 'Delhi Landing Page',
-    "page_url"    => $page_url
-]);
-
-$ch = curl_init($googleScriptUrl);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_TIMEOUT, 8);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    'Content-Type: application/json'
-]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-
-$response = curl_exec($ch);
-curl_close($ch);
+// Note: Google Sheets logging is handled directly and reliably by index.html via fetch().
+// send_mail.php focuses exclusively on sending email notifications to avoid duplicate rows.
 
 
 // ─── Build the email ──────────────────────────────────────────────────────────
