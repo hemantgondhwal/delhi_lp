@@ -1,7 +1,10 @@
 <?php
 // ─── Configuration ────────────────────────────────────────────────────────────
-define('RECIPIENT_EMAIL', 'support@thexlacademy.com');
-define('RECIPIENT_NAME',  'The XL Academy');
+$recipient_emails = [
+    'support@thexlacademy.com',
+    'Analyticsproschool@gmail.com',
+    'masteranalytics.india@gmail.com',
+];
 define('SITE_NAME',       'The XL Academy');
 
 // ─── Security: only accept POST requests ──────────────────────────────────────
@@ -43,7 +46,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 
 // ─── Build the email ──────────────────────────────────────────────────────────
-$subject = "New Enquiry from {$name} — " . SITE_NAME;
+$leadName = !empty($name) ? $name : 'Student';
+$subject  = "New Lead : Delhi LP - " . $leadName;
 
 $body = "
 <!DOCTYPE html>
@@ -112,20 +116,26 @@ $body = "
 ";
 
 // ─── Email headers ────────────────────────────────────────────────────────────
-$to      = RECIPIENT_NAME . ' <' . RECIPIENT_EMAIL . '>';
 $headers = implode("\r\n", [
     'MIME-Version: 1.0',
     'Content-Type: text/html; charset=UTF-8',
     'From: ' . SITE_NAME . ' <no-reply@thexlacademy.com>',
-    'Reply-To: ' . $name . ' <' . $email . '>',
+    'Reply-To: ' . ($name ? $name . ' ' : '') . '<' . $email . '>',
     'X-Mailer: PHP/' . phpversion(),
 ]);
 
-// ─── Send email ───────────────────────────────────────────────────────────────
-$sent = mail($to, $subject, $body, $headers);
+// ─── Send email to all recipients ─────────────────────────────────────────────
+$sent = false;
+foreach ($recipient_emails as $recipient) {
+    if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+        if (@mail($recipient, $subject, $body, $headers)) {
+            $sent = true;
+        }
+    }
+}
 
 // ─── Auto-reply to the enquirer ───────────────────────────────────────────────
-if ($sent) {
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $autoSubject = "Thank you for your enquiry — " . SITE_NAME;
     $autoBody = "
 <!DOCTYPE html>
@@ -185,12 +195,11 @@ if ($sent) {
 }
 
 // ─── Response ─────────────────────────────────────────────────────────────────
-if ($sent) {
-    // Redirect to thank you page
-    header('Location: thankyou.html');
-    exit;
-} else {
-    // Redirect back with error flag
-    header('Location: index.html');
+if (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false) {
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'success', 'redirect' => 'thankyou.html']);
     exit;
 }
+
+header('Location: thankyou.html');
+exit;
