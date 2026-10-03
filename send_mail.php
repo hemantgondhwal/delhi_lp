@@ -128,7 +128,7 @@ $headers = implode("\r\n", [
 $sent = false;
 foreach ($recipient_emails as $recipient) {
     if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-        if (@mail($recipient, $subject, $body, $headers)) {
+        if (@mail($recipient, $subject, $body, $headers, "-f support@thexlacademy.com")) {
             $sent = true;
         }
     }

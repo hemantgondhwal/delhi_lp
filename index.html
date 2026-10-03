@@ -2990,7 +2990,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       action_type: formData.get('action_type') || (isSyllabus ? 'Syllabus Download' : 'Enquiry / Demo'),
       page_url: window.location.href,
       timestamp: new Date().toISOString(),
-      source: 'Delhi Landing Page'
+      source: 'Delhi Landing Page',
+      notify_to: 'support@thexlacademy.com, Analyticsproschool@gmail.com, masteranalytics.india@gmail.com'
     };
 
     const jsonPayload = JSON.stringify(leadPayload);
