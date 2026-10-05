@@ -3,7 +3,6 @@
 $recipient_emails = [
     'support@thexlacademy.com',
     'Analyticsproschool@gmail.com',
-    'masteranalytics.india@gmail.com',
 ];
 define('SITE_NAME',       'The XL Academy');
 
@@ -124,11 +123,20 @@ $headers = implode("\r\n", [
     'X-Mailer: PHP/' . phpversion(),
 ]);
 
+// ─── Helper: deliver email with fallback ──────────────────────────────────────
+function deliverMail(string $to, string $subj, string $msg, string $hdrs): bool {
+    $ok = @mail($to, $subj, $msg, $hdrs, "-f support@thexlacademy.com");
+    if (!$ok) {
+        $ok = @mail($to, $subj, $msg, $hdrs);
+    }
+    return $ok;
+}
+
 // ─── Send email to all recipients ─────────────────────────────────────────────
 $sent = false;
 foreach ($recipient_emails as $recipient) {
     if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-        if (@mail($recipient, $subject, $body, $headers, "-f support@thexlacademy.com")) {
+        if (deliverMail($recipient, $subject, $body, $headers)) {
             $sent = true;
         }
     }
@@ -191,7 +199,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         'X-Mailer: PHP/' . phpversion(),
     ]);
 
-    mail($email, $autoSubject, $autoBody, $autoHeaders);
+    deliverMail($email, $autoSubject, $autoBody, $autoHeaders);
 }
 
 // ─── Response ─────────────────────────────────────────────────────────────────
