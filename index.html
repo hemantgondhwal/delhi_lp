@@ -8,7 +8,9 @@
 <link rel="icon" type="image/png" href="icon.png" />
 <link rel="shortcut icon" type="image/png" href="icon.png" />
 <link rel="apple-touch-icon" href="icon.png" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Lucide Icons -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
@@ -39,11 +41,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-sizing: border-box;
   }
   html, body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
     max-width: 100vw;
     width: 100%;
+  }
+  h1, h2, h3, h4, .hero-title, .gradient-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
   }
   body {
     background: #fff;
@@ -320,7 +326,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   @media (max-width: 768px) {
-    .hero-title { font-size: clamp(1.65rem, 6.5vw, 2.5rem) !important; line-height: 1.22 !important; }
+    .hero-title { font-size: clamp(1.75rem, 6.5vw, 2.5rem) !important; line-height: 1.22 !important; letter-spacing: -0.025em !important; }
     .gradient-heading { font-size: clamp(1.5rem, 5.5vw, 2.25rem) !important; line-height: 1.25 !important; }
     .stat-grid { grid-template-columns: 1fr 1fr; }
     .bg-image-section { background-attachment: scroll !important; }
@@ -536,8 +542,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         #1 Data Science &amp; Analytics Training Institute in Delhi NCR
       </div>
 
-      <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4 animate-fade-up animate-delay-1">
-        Launch Your High-Paying <br class="hidden sm:inline"><span class="shimmer-text">Data Science &amp; Analytics Career</span> in Delhi NCR
+      <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4 animate-fade-up animate-delay-1 tracking-tight">
+        Launch Your <span class="whitespace-nowrap">High-Paying</span> <br class="hidden sm:inline"><span class="shimmer-text">Data Science &amp; Analytics Career</span>
       </h1>
 
       <!-- Verified Upcoming Batch Pill (Replaces Artificial Countdown) -->
