@@ -61,12 +61,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* Hero */
   .hero-bg {
-    background: linear-gradient(135deg, #0A1628 0%, #0F203C 55%, #1B2B6B 100%);
+    background:
+      radial-gradient(ellipse 80% 60% at 75% -10%, rgba(59, 130, 246, 0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 15% 100%, rgba(37, 99, 235, 0.18) 0%, transparent 65%),
+      linear-gradient(140deg, #0A192F 0%, #0D2140 45%, #132D56 80%, #1A3A6B 100%);
     position: relative; overflow: hidden;
   }
   .hero-bg::before {
     content: ''; position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 40%, transparent 100%);
+    pointer-events: none;
   }
   .hero-orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
 
@@ -165,7 +174,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   /* CTA Section */
-  .cta-section { background: linear-gradient(135deg, #0A1628 0%, #0F203C 55%, #1B2B6B 100%); }
+  .cta-section {
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 20%, rgba(59, 130, 246, 0.22) 0%, transparent 70%),
+      linear-gradient(140deg, #0A192F 0%, #0D2140 45%, #132D56 80%, #1A3A6B 100%);
+  }
 
   /* Floating sticky call */
   .floating-call {
@@ -301,7 +314,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* Notification bar */
   .notif-bar {
-    background: #0A1628; border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(90deg, #0A192F 0%, #0D2140 50%, #0A192F 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
   /* Gallery / image section */
@@ -532,8 +546,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HERO SECTION -->
 <section class="hero-bg py-10 sm:py-14 md:py-16 px-4 relative">
-  <div class="hero-orb w-80 sm:w-96 h-80 sm:h-96 top-[-40px] right-[-40px] opacity-10" style="background: #2563EB;"></div>
-  <div class="hero-orb w-64 h-64 bottom-[-20px] left-[-20px] opacity-05" style="background: #1D4ED8;"></div>
+  <div class="hero-orb w-80 sm:w-96 h-80 sm:h-96 top-[-40px] right-[-40px] opacity-25" style="background: #2563EB; animation: orbFloat 9s ease-in-out infinite;"></div>
+  <div class="hero-orb w-64 h-64 bottom-[-20px] left-[-20px] opacity-20" style="background: #38BDF8; animation: orbFloat 11s ease-in-out infinite reverse;"></div>
 
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
     <div>
@@ -543,7 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4 animate-fade-up animate-delay-1 tracking-tight">
-        Launch Your <span class="whitespace-nowrap">High-Paying</span> <br class="hidden sm:inline"><span class="shimmer-text">Data Science &amp; Analytics Career</span>
+        Launch Your High-Paying <br class="hidden sm:inline"><span class="shimmer-text">Data Science &amp; Analytics Career</span> in Delhi NCR
       </h1>
 
       <!-- Verified Upcoming Batch Pill (Replaces Artificial Countdown) -->
@@ -583,12 +597,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </a>
         </div>
       </div>
-      <!-- Hero trust signals -->
-      <div class="flex flex-wrap gap-3 sm:gap-5 text-slate-300 text-[11px] sm:text-xs md:text-sm animate-fade-up animate-delay-3">
-        <span class="flex items-center gap-1.5"><svg width="15" height="15" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Google 4.9★ (1,200+ Reviews)</span>
-        <span class="flex items-center gap-1.5"><svg width="15" height="15" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 350+ Hiring Partners</span>
-        <span class="flex items-center gap-1.5"><svg width="15" height="15" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 0% Interest EMI</span>
-        <span class="flex items-center gap-1.5"><svg width="15" height="15" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> IBM &amp; Microsoft Aligned</span>
+      <!-- Hero trust signals (Optimized with Salary Hike & Google Rating) -->
+      <div class="flex flex-wrap gap-2.5 sm:gap-4 text-slate-300 text-[11px] sm:text-xs md:text-sm animate-fade-up animate-delay-3">
+        <span class="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10"><svg width="14" height="14" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Google 4.9★ (1,200+ Reviews)</span>
+        <span class="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10"><svg width="14" height="14" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 350+ Hiring Partners</span>
+        <span class="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10"><svg width="14" height="14" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 68% Avg Salary Hike</span>
+        <span class="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10"><svg width="14" height="14" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 0% EMI (₹3,999/mo)</span>
+        <span class="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10"><svg width="14" height="14" fill="#10B981" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> IBM &amp; Microsoft Aligned</span>
       </div>
     </div>
 
@@ -600,8 +615,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           Delhi NCR Campus — Admissions Open
         </div>
-        <h3 class="text-xl font-black text-slate-900 mb-1">Book Your Free Demo !!!</h3>
-        <p class="text-slate-500 text-xs md:text-sm">Our Expert will call you within 2 hours</p>
+        <h3 class="text-xl font-black text-slate-900 mb-1">Book Your Free Demo Class</h3>
+        <p class="text-slate-500 text-xs md:text-sm">Our Senior Career Mentor will call you within 2 hours</p>
       </div>
       <form id="heroEnquiryForm" action="send_mail.php" method="POST">
         <input type="hidden" name="page_url" id="heroFormUrl" />
@@ -646,7 +661,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- STATS / NUMBERS SECTION (Below Hero) -->
-<section class="py-6 sm:py-8 px-4" style="background: #0B1528; border-bottom: 1px solid rgba(255,255,255,0.06);">
+<section class="py-6 sm:py-8 px-4" style="background: linear-gradient(180deg, #0A192F 0%, #0D2140 100%); border-bottom: 1px solid rgba(255,255,255,0.08);">
   <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
     <div class="stat-card p-3.5 sm:p-6 text-center">
       <div class="text-2xl sm:text-4xl font-black text-white mb-1">14+</div>
